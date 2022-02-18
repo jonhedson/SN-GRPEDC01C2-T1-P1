@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using SN.Core.Models;
@@ -6,13 +8,13 @@ using System.IO;
 
 namespace SN.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) :
             base(options)
         { }
 
-        public DbSet<UserTest> UserTests { get; set; }
+        
     }
 
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
